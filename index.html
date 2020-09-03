@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="index.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
+
+    <title>Guess the Flags</title>
+    
+</head>
+
+
+<body>
+
+    <main class="main_class">
+
+        <section class="menu_class">
+            <div id="site_title_id">
+                <h2>Guess the Flags</h2>
+            </div>
+            
+            <!-- <div class="tematic_challenger_class">
+                <h2>Tematics</h2>
+                <div class="tematic_menu_class">
+                    <div class="the_button_class">
+                        <input type="radio" name="button_tematic" id="tematic_button_1_id" value='countries'>
+                        <label for="tematic_button_1_id">Countries</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_tematic" id="tematic_button_2_id" value='political'>
+                        <label for="tematic_button_2_id">Political</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_tematic" id="tematic_button_3_id" value='historical'>
+                        <label for="tematic_button_3_id">Historical</label>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="dificult_level_class">
+                <h2>Dificult Level</h2>
+                <div class="tematic_menu_class">
+                    <div class="the_button_class">
+                        <input type="radio" name="button_level" id="level_button_1_id" value="easy">
+                        <label for="level_button_1_id" unselectable>Easy</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_level" id="level_button_2_id" value="normal">
+                        <label for="level_button_2_id" unselectable>Normal</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_level" id="level_button_3_id" value="hard">
+                        <label for="level_button_3_id" unselectable>Hard</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_level" id="level_button_4_id" value="random">
+                        <label for="level_button_4_id" unselectable>Random</label>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="size_challenger_class">
+                <h2>Number of Questions</h2>
+                <div class="tematic_menu_class">
+                    <div class="the_button_class">
+                        <input type="radio" name="button_size" id="size_button_1_id" value="15">
+                        <label for="size_button_1_id" class="button_label_class">15</label>
+                    </div>
+                    <div class="the_button_class">
+                        <input type="radio" name="button_size" id="size_button_2_id" value="25">
+                        <label for="size_button_2_id" class="button_label_class">25</label>
+                    </div>
+                    <!-- <div class="the_button_class">
+                        <input type="radio" name="button_size" id="size_button_3_id">
+                        <label for="size_button_3_id">50</label>
+                    </div> -->
+                    <div class="the_button_class">
+                        <input type="radio" name="button_size" id="size_button_4_id" value="all">
+                        <label for="size_button_4_id" class="button_label_class">All</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button_createchallenger_class">
+                <button id="create_challenger_button_id">Start!</button>
+            </div>
+
+        </section>
+
+
+        <section id="main_section_id">
+            
+            <div id="main_card_id">
+
+                <div id="counter_id">
+                    
+                </div>
+
+                <div class="flag_class">
+                    <div id="init_flag_id">
+                        <p>Select the number of questions do you want and click 'START!' to iniciate the challenger!</p>
+                    </div>
+                    <!-- <div id="some_flag_id"><img id="someFlag" src="" alt="flag_name"></div> -->
+                    <img id="someFlag" src="" alt="flag_name">
+                </div>
+    
+                <div class="options_answer_class">
+                    <button id="card_1_id" class="card_button" name="theAnswer"></button>
+                    <button id="card_2_id"  class="card_button" name="theAnswer"></button>
+                    <button id="card_3_id"  class="card_button" name="theAnswer"></button>
+                    <button id="card_4_id"  class="card_button" name="theAnswer"></button>
+                </div>
+                
+            </div>
+
+            <div class="button_div_next_class">
+                <button id="button_next_id">Next</button>
+            </div>
+
+            
+
+            <div id="results_card_id">
+                <div id="user_answers_score">
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+
+    <section class="section_curiosity_class">
+        <div class="curiosity_text_class">
+            <h2>What is a flag?</h2>
+            <p>Traditionally a flag designates a symbolic visual representation for a group or an entity, what can be a State, a people, a family, a corporation or yet an idea. Commonly associate with its representation in cloth and colors, a flag overflows the materiality and can assume words, ideas, visuals associations indicating some identity, a concept that provides a unity illustration.</p>
+            <p>Each country has their own flag, with multiples colors and designs, making it unique easy to recognize. The uses of the different colors and designs can commonly designate a representation their own historical process. </p>
+        </div>
+        <div class="curiosity_text_class">
+            <h2>What is a sovereign country?</h2>
+            <p>Naturally, without the pretension to fall in a semantic trap, its comprehensive that the meaning of Sovereign change according with the time, the use context, and the political-philosophic affiliation. The meaning of Sovereign in general sense can appoint to a command power in its last political instance, on the other hand, in a restrict sense, the term Sovereign appears in the end of XVI century beside of the modern concept of the State, reaching a political-legal designation. Initially, that occur for the necessity of union and centralization of the power and the force monopole, which was transmuted in the figure of the absolute monarch and the formation of national states by the convergency of a territory and a population. This perception implies in an ambivalence way to see the sovereign, with a internal and a external perception of the ‘phenomenon’: the first, assume an inside perception of the own society who is submitted by the cohesion structure of the power; same time, an outside view expose the concurrence with others powers that’s demands recognition (BOBBIO, MATTEUCCI & PASQUINO 1998, p. 1189-1190).</p>
+            <p>Two traditional theories explain how to assume a state as a sovereign: the constitutive theory of statehood considers that when a territory obtains the necessary requirements and declares itself as a state, and it is a state. That’s provides a perception of state without the recognizes condition, a complete individualized criterion, resulting what can be a factual exercise of power independently of others. Otherwise, the declarative theory considers the statehood established only when it is recognized by others sovereign states. This second theory presents an external criterion through a community of states who recognize themselves (ARMSTRONG 2017, p. 3-4).</p>
+        </div>
+        <div class="curiosity_text_class">
+            <p>ARMSTRONG, Cameron, "Why Recognition Matters: The Death Of Absolute Sovereignty" (2017). All Theses And Dissertations. 149. From https://dune.une.edu/cgi/viewcontent.cgi?article=1148&context=theses.</p>
+            <p>BOBBIO, Norberto; MATTEUCCI, Nicola; PASQUINO, Gianfranco. Dicionário de política. Brasília: Editora Universidade de Brasília, 1998.</p>
+        </div>
+    </section>
+
+
+
+    <footer class="footer_class">
+        <div class="feedback_class">
+            <p>Suggestions? Critics? Comments? Contact us!</p>
+            <p>guesstheflags@gmail.com</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
