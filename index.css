@@ -9,7 +9,6 @@
 
 body {
     background-color: tomato;
-    
 }
 
 .main_class {
@@ -23,30 +22,54 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* width: 18%; */
+    width: 15%;
 }
-#site_title_id {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.menu_class h2 {
-    margin-bottom: 5px;
+#site_title_id h2 {
     text-align: center;
     font-size: 35px;
+    width: 100%;
+}
+
+.menu_options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.menu_class button {
+    background-color: darkorange;
+    padding: 5px;
+    font-size: 27px;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    transition: 0.5s, color 0.5s;
+    /* border-top: 1px solid rgba(68, 68, 68, 0.438); */
+}
+.size_challenger_class, .regions_challenger_class {
+    transition: height 2s ease;
+}
+
+.menu_class button:hover {
+    background-color: rgb(253, 162, 51);
 }
 
 .tematic_menu_class {
-    display: flex;
-    /* flex-wrap: wrap; */
+    background-color: rgb(255, 116, 2);
+    display: none;
+    overflow: hidden;
+    flex-wrap: wrap;
     justify-content: space-around;
+    padding: 2px;
+    transition: height 1s ease-out;
+    -webkit-transition: height 1s ease-in-out;
 }
 
 /* .dificult_level_class, .tematic_challenger_class, .size_challenger_class {
     padding: 5%;
 } */
 .the_button_class {
-    margin: 10px;
+    margin: 8px;
+    font-size: 22px;
 }
 .the_button_class input {
     display: none;
@@ -58,7 +81,7 @@ body {
     background-color: whitesmoke;
     border-radius: 4px;
     font-size: inherit;
-    padding: 5px;
+    padding: 4px;
     transition: 0.5s, color 0.5s;
     outline: none;
     cursor: pointer;
@@ -80,8 +103,9 @@ body {
 }
 #create_challenger_button_id {
     font-size: 1.3em;
-    height: 70px;
-    width: 90px;
+    height: 60px;
+    width: 80px;
+    font-size: 25px;
 }
 
 #main_section_id {
