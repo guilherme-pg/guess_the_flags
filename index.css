@@ -105,7 +105,7 @@ body {
 .the_button_class input:checked + label {
     background-color: mediumslateblue;
 }
-.the_button_class label, #create_challenger_button_id {
+.the_button_class label, .button_createchallenger_class button {
     background-color: whitesmoke;
     border-radius: 4px;
     font-size: inherit;
@@ -115,10 +115,10 @@ body {
     cursor: pointer;
     box-shadow: 2px 2px 6px 0 gray;
 }
-.the_button_class label:hover, #create_challenger_button_id:hover {
+.the_button_class label:hover, #create_challenger_button_id:hover, #button_reset_data:hover {
     background-color: mediumslateblue;
 }
-.the_button_class label:active, #create_challenger_button_id:active {
+.the_button_class label:active, #create_challenger_button_id:active, #button_reset_data:active {
     background-color: rgb(69, 13, 126);
 }
 
@@ -128,12 +128,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
-#create_challenger_button_id {
+.button_createchallenger_class button {
     font-size: 1.3em;
     height: 60px;
     width: 80px;
     font-size: 25px;
+    margin: 10px;
+}
+#button_reset_data {
+    font-size: .9em;
+    height: 40px;
+    width: 50px;
 }
 
 #main_section_id {
@@ -253,7 +260,7 @@ body {
 
 
 
-#button_next_id {
+#button_next_id, #button_endChallenger {
     background-color: darkorange;
     border-radius: 4px;
     cursor: pointer;
@@ -265,10 +272,13 @@ body {
     transition: 0.5s, color 0.5s;
     width: 90px;
 }
-#button_next_id:hover {
+#button_endChallenger {
+    display: none;
+}
+#button_next_id:hover, #button_endChallenger:hover {
     background-color: rgb(223, 101, 2);
 }
-#button_next_id:active {
+#button_next_id:active, #button_endChallenger:active {
     background-color: rgb(211, 79, 3);
     /* border-color: currentColor; */
 }

@@ -418,6 +418,81 @@ function selectingOptions() {
 };
 
 
+// END THE CHALLENGER AND SHOW THE RESULTS
+function resultsChallenger() {
+    var correctAnswersScore = document.createElement('div');
+    correctAnswersScore.setAttribute('id', 'correct_score_result');
+    document.getElementById('user_answers_score').appendChild(correctAnswersScore);
+
+    var wrongAnswersScore = document.createElement('div');
+    wrongAnswersScore.setAttribute('id', 'wrong_score_result');
+    document.getElementById('user_answers_score').appendChild(wrongAnswersScore);
+
+    document.getElementById('correct_score_result').innerHTML = 'Corrects: ' + correctUserAnswer;
+    document.getElementById('wrong_score_result').innerHTML = 'Wrongs: ' + wrongUserAnswer;
+};
+
+// BUTTON 'THE END' RESULTS
+function showResults() {
+    console.log(' SHOW RESULTS');
+    document.getElementById('button_next_id').style.display = 'none';
+    document.getElementById('create_challenger_button_id').innerHTML = 'Start';
+    document.getElementById('button_endChallenger').style.display = 'none';
+
+    document.getElementById('main_card_id').style.display = 'none';
+    document.getElementById('results_card_id').style.display = 'block';
+
+    resultsChallenger();
+};
+
+
+// STAR THE CHALLENGER WITH A FLAG
+function putTheFirstFlag() {
+    if (i == 0 || i > AmountQuests) {
+        switchFlagAndAnswers();
+    };
+};
+
+
+// NEXT BUTTON : INSERT : SWITCH FLAG AND ANSWERS
+function switchFlagAndAnswers() {
+
+    // document.getElementById("some_flag_id").style.display = 'block';
+    document.getElementById("someFlag").style.display = 'block';
+    document.getElementById("init_flag_id").style.display = 'none';
+    randomFlagNumberC = Math.floor(Math.random() * unrepeatableFlagsArray.length);
+
+    unrepeatableFlags();
+
+    // INSERT FLAG
+    mainFlag = JSON.parse(JSON.stringify(selectedFlagWithdrawn[0]));
+    document.getElementById("someFlag").src = mainFlag['dataFlag'];
+    
+    // SHUFFLE WITH EXCLUSIVE SELECTION FLAGS
+    exclusiveFlagSelection();
+
+    // randomFlagNumber2 = Math.floor(Math.random() * flagsArray.length);
+    // randomFlagNumber3 = Math.floor(Math.random() * flagsArray.length);
+    // randomFlagNumber4 = Math.floor(Math.random() * flagsArray.length);
+
+    // SEARCHING AND SHUFFLING ANSWERS
+    answerArray = [mainFlag, flagsArray[randomFlagNumber2], flagsArray[randomFlagNumber3], flagsArray[randomFlagNumber4]];
+    shuffleArray(answerArray);
+
+    // INSERT ANSWERS
+    document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
+    document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
+    document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
+    document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
+
+    i++
+
+    buttonColorsRestore();
+    enableAnswerButtons();
+    counterChallenger();
+    endChallenger();
+};
+
 
 // CHALLENGER SIZE EXE AND END
 function activeChallenger() {
@@ -432,6 +507,7 @@ function activeChallenger() {
     
     // EVENT CLICK: CHANGE FLAG AND ANSWERS : button : NEXT
     document.getElementById('button_next_id').addEventListener('click', switchFlagAndAnswers);
+    document.getElementById('button_endChallenger').addEventListener('click', showResults);
 
     document.getElementById('button_next_id').style.display = 'block';
     document.getElementById('main_card_id').style.display = 'block';
@@ -442,12 +518,7 @@ function activeChallenger() {
 };
 
 
-// STAR THE CHALLENGER WITH A FLAG
-function putTheFirstFlag() {
-    if (i == 0 || i > AmountQuests) {
-        switchFlagAndAnswers();
-    };
-};
+
 
 
 // RESTART THE DEFAULT DATA
@@ -534,21 +605,6 @@ function counterChallenger() {
 };
 
 
-// END THE CHALLENGER AND SHOW THE RESULTS
-function resultsChallenger() {
-    var correctAnswersScore = document.createElement('div');
-    correctAnswersScore.setAttribute('id', 'correct_score_result');
-    document.getElementById('user_answers_score').appendChild(correctAnswersScore);
-
-    var wrongAnswersScore = document.createElement('div');
-    wrongAnswersScore.setAttribute('id', 'wrong_score_result');
-    document.getElementById('user_answers_score').appendChild(wrongAnswersScore);
-
-    document.getElementById('correct_score_result').innerHTML = 'Corrects: ' + correctUserAnswer;
-    document.getElementById('wrong_score_result').innerHTML = 'Wrongs: ' + wrongUserAnswer;
-};
-
-
 // CHANGE THE CARD AFTER END THE CHALLENGER
 function endChallenger() {
     if (i > 0) {
@@ -557,36 +613,14 @@ function endChallenger() {
 
     if (i == AmountQuests) {
         // END CHALLENGER AND SWITCH CONTENT
-        document.getElementById('button_next_id').innerHTML = 'THE END';
-    };
-
-    if (i > AmountQuests) {
         document.getElementById('button_next_id').style.display = 'none';
-        document.getElementById('create_challenger_button_id').innerHTML = 'Start';
-
-        document.getElementById('main_card_id').style.display = 'none';
-        document.getElementById('results_card_id').style.display = 'block';
-
-        resultsChallenger();
+        document.getElementById('button_endChallenger').style.display = 'block';
     };
 };
 
 
-// NEXT BUTTON : INSERT : SWITCH FLAG AND ANSWERS
-function switchFlagAndAnswers() {
 
-    // document.getElementById("some_flag_id").style.display = 'block';
-    document.getElementById("someFlag").style.display = 'block';
-    document.getElementById("init_flag_id").style.display = 'none';
-    randomFlagNumberC = Math.floor(Math.random() * unrepeatableFlagsArray.length);
-
-    unrepeatableFlags();
-
-    // INSERT FLAG
-    mainFlag = JSON.parse(JSON.stringify(selectedFlagWithdrawn[0]));
-    document.getElementById("someFlag").src = mainFlag['dataFlag'];
-    
-    // SHUFFLE WITH EXCLUSIVE SELECTION FLAGS
+function exclusiveFlagSelection() {
     d = 0;
     randomFlagNumber2 = Math.floor(Math.random() * flagsArray.length);
     while (d < 3) {
@@ -611,28 +645,15 @@ function switchFlagAndAnswers() {
             d++;
         };
     };
-
-    // randomFlagNumber2 = Math.floor(Math.random() * flagsArray.length);
-    // randomFlagNumber3 = Math.floor(Math.random() * flagsArray.length);
-    // randomFlagNumber4 = Math.floor(Math.random() * flagsArray.length);
-
-    // SEARCHING AND SHUFFLING ANSWERS
-    answerArray = [mainFlag, flagsArray[randomFlagNumber2], flagsArray[randomFlagNumber3], flagsArray[randomFlagNumber4]];
-    shuffleArray(answerArray);
-
-    // INSERT ANSWERS
-    document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
-    document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
-    document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
-    document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
-
-    i++
-
-    buttonColorsRestore();
-    enableAnswerButtons();
-    counterChallenger();
-    endChallenger();
 };
+
+function resetOptions() {
+    var btns = document.querySelectorAll('input[type="radio"]');
+    for (var ct = 0; ct < btns.length; ct++) {
+        btns[ct].checked = false;
+    };
+};
+
 
 
 // COMANDS AND DISPLAY
@@ -646,3 +667,6 @@ document.getElementById('button_next_id').style.display = 'none';
 
 // BUTTON TO CREATE THE CHALLENGER : button : CREATE CHALLENGER
 document.getElementById('create_challenger_button_id').addEventListener('click', startChallenger);
+
+// BUTTON RESET OPTIONS
+document.getElementById('button_reset_data').addEventListener('click', resetOptions);
