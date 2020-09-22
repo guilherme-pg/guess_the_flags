@@ -15,7 +15,7 @@ body {
 
 .main_class {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 
@@ -23,9 +23,12 @@ body {
     background-color: darkorange;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     text-align: center;
     width: 15%;
+}
+#site_title_id {
+    margin-bottom: 70px;
 }
 #site_title_id a {
     font-size: 35px;
@@ -78,10 +81,6 @@ body {
     0% { opacity: 0}   
   100% { opacity: 1}
 }
-
-
-
-
 
 .regions_challenger_class:hover .button_collapsible {
     background-color: rgb(255, 170, 66);
@@ -151,7 +150,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
     width: 100%;
 }
 
@@ -162,7 +160,7 @@ body {
     margin-bottom: 20px;
     border-radius: 4px;
     width: 650px;
-    height: 500px;
+    height: 100%;
     box-shadow: 2px 2px 6px 0 rgb(99, 98, 98);
 }
 
@@ -212,13 +210,14 @@ body {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     margin-bottom: 10px;
+    
 }
 
 #options_answer_id button {
     background-color: mediumslateblue;
     border-radius: 4px;
     cursor: pointer;
-    margin: 10px;
+    margin: 5px;
     outline: none;
     transition: 0.5s, color 0.5s;
     height: 40px;
@@ -262,12 +261,12 @@ body {
     border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
-    font-size: 1.3em;
-    height: 70px;
-    margin: 0 2em 2em 2em;
+    font-size: 100%;
+    height: 60px;
+    margin: 0 2em .5em 2em;
     outline: none;
     transition: 0.5s, color 0.5s;
-    width: 90px;
+    width: 80px;
 }
 #button_endChallenger {
     display: none;

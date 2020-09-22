@@ -257,13 +257,19 @@ var challengerCont = 00;
 var flagsArray = countryFlagsArray;
 var generalFlagsArray;
 var i = 00;
+var b = 00;
 var g = 00;
+var f = 00;
 var index = 'xx';
 var mainFlag = 'xx';
 var randomFlagNumberC = 00;
 var randomFlagNumber2 = 00;
 var randomFlagNumber3 = 00;
 var randomFlagNumber4 = 00;
+var randomFlagNumber5 = 00;
+var randomFlagNumber6 = 00;
+var randomFlagNumber7 = 00;
+var randomFlagNumber8 = 00;
 var selectedFlagWithdrawn = 'xx';
 var size = 00;
 var unrepeatableFlagsArray = JSON.parse(JSON.stringify(countryFlagsArray));
@@ -392,7 +398,7 @@ function wrongResults() {
 };
 
 function correctAnswerCheck() {
-    for (ans = 0; ans < 4; ans++) {
+    for (ans = 0; ans < b; ans++) {
         if (document.getElementsByClassName('card_button')[ans].textContent == mainFlag['flagName']) {
             document.getElementsByClassName('card_button')[ans].style.backgroundColor = "rgb(101, 230, 101)";
         };
@@ -460,6 +466,47 @@ function putTheFirstFlag() {
 };
 
 
+// INSERT ANSWERS
+function insertAnswers() {
+
+    // for (ct = 0; ct < b; ct++) {
+    //     document.getElementById('card_1_id').innerHTML = answerArray[ct]['flagName'];
+    // };
+
+    if (b == 2) {
+        document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
+        document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
+    } else if (b == 4) {
+        document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
+        document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
+        document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
+        document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
+    } else if (b == 8) {
+        document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
+        document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
+        document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
+        document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
+        document.getElementById('card_5_id').innerHTML = answerArray[4]['flagName'];
+        document.getElementById('card_6_id').innerHTML = answerArray[5]['flagName'];
+        document.getElementById('card_7_id').innerHTML = answerArray[6]['flagName'];
+        document.getElementById('card_8_id').innerHTML = answerArray[7]['flagName'];
+    };
+};
+
+
+// SELECTING ARRAY
+function selectingArray() {
+    if (b == 2) {
+        answerArray = [mainFlag, flagsArray[randomFlagNumber2]];
+    } else if (b == 4) {
+        answerArray = [mainFlag, flagsArray[randomFlagNumber2], flagsArray[randomFlagNumber3], flagsArray[randomFlagNumber4]];
+    } else if (b == 8) {
+        answerArray = [mainFlag, flagsArray[randomFlagNumber2], flagsArray[randomFlagNumber3], flagsArray[randomFlagNumber4], flagsArray[randomFlagNumber5], flagsArray[randomFlagNumber6], flagsArray[randomFlagNumber7], flagsArray[randomFlagNumber8]];
+    };
+};
+
+
+
 // NEXT BUTTON : INSERT : SWITCH FLAG AND ANSWERS
 function switchFlagAndAnswers() {
 
@@ -482,18 +529,11 @@ function switchFlagAndAnswers() {
     // randomFlagNumber4 = Math.floor(Math.random() * flagsArray.length);
 
     // SEARCHING AND SHUFFLING ANSWERS
-    answerArray = [mainFlag, flagsArray[randomFlagNumber2], flagsArray[randomFlagNumber3], flagsArray[randomFlagNumber4]];
+    selectingArray();
+
     shuffleArray(answerArray);
 
-    // INSERT ANSWERS
-    document.getElementById('card_1_id').innerHTML = answerArray[0]['flagName'];
-    document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
-    document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
-    document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
-    document.getElementById('card_5_id').innerHTML = answerArray[4]['flagName'];
-    document.getElementById('card_6_id').innerHTML = answerArray[5]['flagName'];
-    document.getElementById('card_7_id').innerHTML = answerArray[6]['flagName'];
-    document.getElementById('card_8_id').innerHTML = answerArray[7]['flagName'];
+    insertAnswers();
 
     i++
 
@@ -504,90 +544,97 @@ function switchFlagAndAnswers() {
 };
 
 
+
+function setAttributes(el, attrs) {
+    for(var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    };
+};
+
+
 // NUMBER OF ANSWERS IN THE CHALLENGER
 var answersSpace = document.getElementById("options_answer_id");
 function numberAnswers() {
     var buttonAnswer = document.createElement("button");
-    var b = 0;
     
     if (document.getElementById('answer_button_1_id').checked) {
         b = 2;
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_1_id");
+        setAttributes(buttonAnswer, {"id": "card_1_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_2_id");
+        setAttributes(buttonAnswer, {"id": "card_2_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
     } else if (document.getElementById('answer_button_2_id').checked) {
         b = 4;
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_1_id");
+        setAttributes(buttonAnswer, {"id": "card_1_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_2_id");
+        setAttributes(buttonAnswer, {"id": "card_2_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_3_id");
+        setAttributes(buttonAnswer, {"id": "card_3_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_4_id");
+        setAttributes(buttonAnswer, {"id": "card_4_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
     } else if (document.getElementById('answer_button_3_id').checked) {
         b = 8;
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_1_id");
+        setAttributes(buttonAnswer, {"id": "card_1_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_2_id");
+        setAttributes(buttonAnswer, {"id": "card_2_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_3_id");
+        setAttributes(buttonAnswer, {"id": "card_3_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_4_id");
+        setAttributes(buttonAnswer, {"id": "card_4_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_5_id");
+        setAttributes(buttonAnswer, {"id": "card_5_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_6_id");
+        setAttributes(buttonAnswer, {"id": "card_6_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_7_id");
+        setAttributes(buttonAnswer, {"id": "card_7_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_8_id");
+        setAttributes(buttonAnswer, {"id": "card_8_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
     } else {
         b = 4;
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_1_id");
+        setAttributes(buttonAnswer, {"id": "card_1_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_2_id");
+        setAttributes(buttonAnswer, {"id": "card_2_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
 
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_3_id");
+        setAttributes(buttonAnswer, {"id": "card_3_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
         
         buttonAnswer = document.createElement("button");
-        buttonAnswer.setAttribute("id", "card_4_id");
+        setAttributes(buttonAnswer, {"id": "card_4_id", "class": "card_button"});
         answersSpace.appendChild(buttonAnswer);
     }
 }
@@ -619,9 +666,9 @@ function activeChallenger() {
 
 // AFTER START OR RESTART REMOVE THE BUTTONS TO RENEW
 function removeButtons() {
-    for (f = 0; f < b; f++) {
-        var theButtons = document.getElementById('options_answer_id');
-        theButtons.removeChild(theButtons.childNodes[f])
+    var optionsAnswerButtons = document.getElementById("options_answer_id");
+    while (optionsAnswerButtons.hasChildNodes()) {
+        optionsAnswerButtons.removeChild(optionsAnswerButtons.firstChild);
     };
 };
 
@@ -635,6 +682,7 @@ function restartData() {
     countryLevelArray = [];
     unionFlagsArray = [];
     // AmountQuests = 00;
+    document.getElementById('button_endChallenger').style.display = 'none';
     
     var elementsToReset = document.getElementById('correct_score_result');
     if (elementsToReset != null) {
@@ -644,12 +692,13 @@ function restartData() {
     };
 
     removeButtons();
-
 };
 
 
 // BUTTON STAR/RESTART THE CHALLENGER
 function startChallenger() {
+
+    restartData();
 
     selectRegion();
 
@@ -665,9 +714,6 @@ function startChallenger() {
     document.querySelectorAll('.card_button').forEach(item => {
     item.addEventListener('click', checkAnswer);
     });
-    
-    restartData();
-    
 };
 
 
@@ -695,7 +741,7 @@ function shuffleArray(array) {
 
 // CHANGE THE COLORS OF THE ANSWER BUTTONS AFTER CLICK NEXT
 function buttonColorsRestore() {
-    for (j = 0; j < 4; j++) {
+    for (j = 0; j < b; j++) {
         document.getElementsByClassName('card_button')[j].style.backgroundColor = "";
     };
 };
@@ -740,6 +786,7 @@ function exclusiveFlagSelection() {
         } else {
             d++;
         };
+
         randomFlagNumber3 = Math.floor(Math.random() * flagsArray.length);
         if (flagsArray[randomFlagNumber3]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber3]['flagName'] == flagsArray[randomFlagNumber2]['flagName']) {
             randomFlagNumber3 = Math.floor(Math.random() * flagsArray.length);
@@ -747,10 +794,43 @@ function exclusiveFlagSelection() {
         } else {
             d++;
         };
+
         randomFlagNumber4 = Math.floor(Math.random() * flagsArray.length);
         if (flagsArray[randomFlagNumber4]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber4]['flagName'] == flagsArray[randomFlagNumber2]['flagName'] || flagsArray[randomFlagNumber4]['flagName'] == flagsArray[randomFlagNumber3]['flagName']) {
             randomFlagNumber4 = Math.floor(Math.random() * flagsArray.length);
             d = d -3;
+        } else {
+            d++;
+        };
+
+        randomFlagNumber5 = Math.floor(Math.random() * flagsArray.length);
+        if (flagsArray[randomFlagNumber5]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber5]['flagName'] == flagsArray[randomFlagNumber2]['flagName'] || flagsArray[randomFlagNumber5]['flagName'] == flagsArray[randomFlagNumber3]['flagName'] || flagsArray[randomFlagNumber5]['flagName'] == flagsArray[randomFlagNumber4]['flagName']) {
+            randomFlagNumber5 = Math.floor(Math.random() * flagsArray.length);
+            d = d -4;
+        } else {
+            d++;
+        };
+
+        randomFlagNumber6 = Math.floor(Math.random() * flagsArray.length);
+        if (flagsArray[randomFlagNumber6]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber6]['flagName'] == flagsArray[randomFlagNumber2]['flagName'] || flagsArray[randomFlagNumber6]['flagName'] == flagsArray[randomFlagNumber3]['flagName'] || flagsArray[randomFlagNumber6]['flagName'] == flagsArray[randomFlagNumber4]['flagName'] || flagsArray[randomFlagNumber6]['flagName'] == flagsArray[randomFlagNumber5]['flagName']) {
+            randomFlagNumber6 = Math.floor(Math.random() * flagsArray.length);
+            d = d -5;
+        } else {
+            d++;
+        };
+
+        randomFlagNumber7 = Math.floor(Math.random() * flagsArray.length);
+        if (flagsArray[randomFlagNumber7]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber7]['flagName'] == flagsArray[randomFlagNumber2]['flagName'] || flagsArray[randomFlagNumber7]['flagName'] == flagsArray[randomFlagNumber3]['flagName'] || flagsArray[randomFlagNumber7]['flagName'] == flagsArray[randomFlagNumber4]['flagName'] || flagsArray[randomFlagNumber7]['flagName'] == flagsArray[randomFlagNumber5]['flagName'] || flagsArray[randomFlagNumber7]['flagName'] == flagsArray[randomFlagNumber6]['flagName']) {
+            randomFlagNumber7 = Math.floor(Math.random() * flagsArray.length);
+            d = d -6;
+        } else {
+            d++;
+        };
+
+        randomFlagNumber8 = Math.floor(Math.random() * flagsArray.length);
+        if (flagsArray[randomFlagNumber8]['flagName'] == mainFlag['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber2]['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber3]['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber4]['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber5]['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber6]['flagName'] || flagsArray[randomFlagNumber8]['flagName'] == flagsArray[randomFlagNumber7]['flagName']) {
+            randomFlagNumber8 = Math.floor(Math.random() * flagsArray.length);
+            d = d -7;
         } else {
             d++;
         };
@@ -770,7 +850,6 @@ function resetOptions() {
 
 // INICIALIZED DISPLAY
 document.getElementById('results_card_id').style.display = 'none';
-// document.getElementById('some_flag_id').style.display = 'none';
 document.getElementById("someFlag").style.display = 'none';
 document.getElementById('button_next_id').style.display = 'none';
 
