@@ -282,6 +282,7 @@ var region = 'xx';
 var level;
 var generalRegionArray = [];
 var generalLevelArray = [];
+var preventArray = [];
 
 
 
@@ -315,13 +316,6 @@ function selectRegion() {
 };
 
 
-function preventOceania() {
-    if (region == 'Oceania') {
-        AmountQuests = countryRegionArray.length;
-    };
-};
-
-
 // SELECTING THE LEVEL OF THE CHALLENGER
 function selectDificult() {
     if (document.getElementById('level_button_1_id').checked) {
@@ -341,15 +335,22 @@ function selectDificult() {
 };
 
 
+// PREVENT OPTIONS SMALLER THAN THE NUMBER OF QUESTION
+function preventSmallNumbers() {
+    if (AmountQuests > unionFlagsArray.length) {
+        AmountQuests = unionFlagsArray.length;
+    };
+};
+
+
 // SELECTING THE NUMBER OF QUESTS
 function selectNumberQuests() {
-
     if (document.getElementById('size_button_1_id').checked) {
         AmountQuests = 15;
-        preventOceania();
+        preventSmallNumbers();
     } else if (document.getElementById('size_button_2_id').checked) {
         AmountQuests = 25;
-        preventOceania();
+        preventSmallNumbers();
     } else if (document.getElementById('size_button_4_id').checked) {
         AmountQuests = unionFlagsArray.length;
     } else {
@@ -400,21 +401,26 @@ function correctAnswerCheck() {
 
 
 
-
-
-
-
-
-
+function preventNoOptions() {
+    if (n == 0) {
+        unionFlagsArray = preventArray;
+    };
+};
 
 
 // FILTER OPTIONS SELECTED
 function selectingOptions() {
+    n = 0;
     for (selec = 0; selec < countryFlagsArray.length; selec++) {
         if (countryFlagsArray[selec]['continent'].includes(region) && countryFlagsArray[selec]['level'].includes(level)) {
             unionFlagsArray.push(countryFlagsArray[selec]);
+            n = 1;
+        } else if (countryFlagsArray[selec]['continent'].includes(region)) {
+            preventArray.push(countryFlagsArray[selec]);
         };
     };
+
+    preventNoOptions();
 };
 
 
@@ -484,6 +490,10 @@ function switchFlagAndAnswers() {
     document.getElementById('card_2_id').innerHTML = answerArray[1]['flagName'];
     document.getElementById('card_3_id').innerHTML = answerArray[2]['flagName'];
     document.getElementById('card_4_id').innerHTML = answerArray[3]['flagName'];
+    document.getElementById('card_5_id').innerHTML = answerArray[4]['flagName'];
+    document.getElementById('card_6_id').innerHTML = answerArray[5]['flagName'];
+    document.getElementById('card_7_id').innerHTML = answerArray[6]['flagName'];
+    document.getElementById('card_8_id').innerHTML = answerArray[7]['flagName'];
 
     i++
 
@@ -492,6 +502,95 @@ function switchFlagAndAnswers() {
     counterChallenger();
     endChallenger();
 };
+
+
+// NUMBER OF ANSWERS IN THE CHALLENGER
+var answersSpace = document.getElementById("options_answer_id");
+function numberAnswers() {
+    var buttonAnswer = document.createElement("button");
+    var b = 0;
+    
+    if (document.getElementById('answer_button_1_id').checked) {
+        b = 2;
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_1_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_2_id");
+        answersSpace.appendChild(buttonAnswer);
+
+    } else if (document.getElementById('answer_button_2_id').checked) {
+        b = 4;
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_1_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_2_id");
+        answersSpace.appendChild(buttonAnswer);
+
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_3_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_4_id");
+        answersSpace.appendChild(buttonAnswer);
+
+    } else if (document.getElementById('answer_button_3_id').checked) {
+        b = 8;
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_1_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_2_id");
+        answersSpace.appendChild(buttonAnswer);
+
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_3_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_4_id");
+        answersSpace.appendChild(buttonAnswer);
+
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_5_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_6_id");
+        answersSpace.appendChild(buttonAnswer);
+
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_7_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_8_id");
+        answersSpace.appendChild(buttonAnswer);
+
+    } else {
+        b = 4;
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_1_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_2_id");
+        answersSpace.appendChild(buttonAnswer);
+
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_3_id");
+        answersSpace.appendChild(buttonAnswer);
+        
+        buttonAnswer = document.createElement("button");
+        buttonAnswer.setAttribute("id", "card_4_id");
+        answersSpace.appendChild(buttonAnswer);
+    }
+}
 
 
 // CHALLENGER SIZE EXE AND END
@@ -518,7 +617,13 @@ function activeChallenger() {
 };
 
 
-
+// AFTER START OR RESTART REMOVE THE BUTTONS TO RENEW
+function removeButtons() {
+    for (f = 0; f < b; f++) {
+        var theButtons = document.getElementById('options_answer_id');
+        theButtons.removeChild(theButtons.childNodes[f])
+    };
+};
 
 
 // RESTART THE DEFAULT DATA
@@ -537,6 +642,9 @@ function restartData() {
         elementsToReset = document.getElementById('wrong_score_result');
         elementsToReset.remove();
     };
+
+    removeButtons();
+
 };
 
 
@@ -546,6 +654,8 @@ function startChallenger() {
     selectRegion();
 
     selectDificult();
+
+    numberAnswers();
 
     activeChallenger();
 
